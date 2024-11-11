@@ -3,18 +3,25 @@
 {% block title %}Details of {{ stone.Nom }}{% endblock %}
 
 {% block content %}
-    <div class="stone-details">
-        <h1>Details of {{ stone.Nom }}</h1>
+<br>
 
-        <img src="{{ image_path }}" alt="{{ stone.Nom }}" style="max-width: 300px; max-height: 300px;">
-        <div>
-            <p><strong>Comments:</strong> {{ stone.Commentaires }}</p>
-            <p><strong>Provenance:</strong> {{ stone.Provenance }}</p>
-            <p><strong>Acquisition Date:</strong> {{ stone.Date_acquisition }}</p>
-            <p><strong>Purchase Price:</strong> {{ stone.Prix_achat }}€</p>
-            <p><strong>Weight:</strong> {{ stone.cm_g }}</p>
-            <p><strong>Additional Information:</strong> {{ stone.autres_infos }}</p>
-            <p><strong>Box:</strong> {{ stone.Boite }}</p>
-        </div>
+<div class="stone-details">
+    <div class="stone-name">
+        <h1>{{ stone.Nom }}</h1>
     </div>
+
+    <div class="stone-image">
+        <img src="{{ image_path }}" alt="{{ stone.Nom }}" />
+    </div>
+
+    <div class="stone-info">
+        <p><strong>Comments:</strong> {{ stone.Commentaires }}</p>
+        <p><strong>Provenance:</strong> {{ stone.Provenance }}</p>
+        <p><strong>Acquisition Date:</strong> {{ stone.Date_acquisition }}</p>
+        <p><strong>Purchase Price:</strong> {{ stone.Prix_achat }}€</p>
+        <p><strong>Weight:</strong> {{ stone.cm_g }}</p>
+        <p><strong>Additional Information:</strong> {{ stone.autres_infos }}</p>
+        <p><strong>Box:</strong> {{ stone.Boite }}</p>
+    </div>
+</div>
 {% endblock %}
