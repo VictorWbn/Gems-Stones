@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}Détails de {{ stone.Nom }}{% endblock %}
+{% block title %}Details of {{ stone.Nom }}{% endblock %}
 
 {% block content %}
     <div class="stone-details">
-        <h1>Détails de {{ stone.Nom }}</h1>
+        <h1>Details of {{ stone.Nom }}</h1>
 
         <img src="{{ image_path }}" alt="{{ stone.Nom }}" style="max-width: 300px; max-height: 300px;">
-
         <div>
-            <p><strong>Commentaires:</strong> {{ stone.Commentaires }}</p>
+            <p><strong>Comments:</strong> {{ stone.Commentaires }}</p>
             <p><strong>Provenance:</strong> {{ stone.Provenance }}</p>
-            <p><strong>Date d'acquisition:</strong> {{ stone.Date_acquisition }}</p>
-            <p><strong>Prix d'achat:</strong> {{ stone.Prix_achat }}€</p>
-            <p><strong>Poids:</strong> {{ stone.cm_g }}</p>
-            <p><strong>Autres informations:</strong> {{ stone.autres_infos }}</p>
-            <p><strong>Boîte:</strong> {{ stone.Boite }}</p>
+            <p><strong>Acquisition Date:</strong> {{ stone.Date_acquisition }}</p>
+            <p><strong>Purchase Price:</strong> {{ stone.Prix_achat }}€</p>
+            <p><strong>Weight:</strong> {{ stone.cm_g }}</p>
+            <p><strong>Additional Information:</strong> {{ stone.autres_infos }}</p>
+            <p><strong>Box:</strong> {{ stone.Boite }}</p>
         </div>
     </div>
 {% endblock %}
