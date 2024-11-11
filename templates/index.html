@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Page d'Accueil{% endblock %}
+
+{% block content %}
+<body>
+    <div class="content">
+        <h1>Bienvenue sur le site des pierres</h1>
+        <ul>
+            {% for stone in stones %}
+                <li>
+                    <a href="/stone/{{ stone[0] }}" class="button">{{ stone[0] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+{% endblock %}
