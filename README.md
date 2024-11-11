@@ -11,7 +11,7 @@ While the repository contains only a few sample images (due to storage considera
 ## Features
 
 - **Stone Listing**: Displays a full list of all gems, stones, and fossils in the collection.
-- **Stone Details**: Each item includes detailed information like comments, origin, acquisition date, purchase price, weight, additional info, and storage box details.
+- **Stone Details**: Each item includes detailed information like comments, origin, acquisition date, purchase price, weight, additional info, and in which storage box the stone/gem is.
 - **Search Functionality**: Allows users to search for specific stones by name.
 - **Add New Stone**: Users can add new stones to the collection by filling out a form with relevant information.
 
