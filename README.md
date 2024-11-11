@@ -8,6 +8,8 @@
 
 While the repository contains only a few sample images (due to storage considerations), this app is fully equipped to handle and display a larger library if hosted locally with the complete image set.
 
+( These are pictures and information about a small part of my personal collection, be indulgent knowing that some data where written more than 10 years ago! )
+
 ## Features
 
 - **Stone Listing**: Displays a full list of all gems, stones, and fossils in the collection.
