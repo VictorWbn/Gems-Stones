@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #ff7300;
     padding: 1em;
     text-align: center;
     color: white;
@@ -34,7 +34,7 @@ select {
 }
 
 a, select {
-    background-color: #4CAF50;
+    background-color: #ff7300;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -64,7 +64,7 @@ ul li {
 }
 
 a:hover, select:hover {
-    background-color: #45a049;
+    background-color: hsl(27, 100%, 70%);
 }
 
 main {
@@ -104,14 +104,14 @@ input, textarea, button {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #ff7300;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: hsl(27, 100%, 70%);
 }
 
 input[type="date"] {
