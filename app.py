@@ -51,17 +51,26 @@ def stone_detail(stone_name):
 
     return render_template('stone_detail.html', stone=stone, image_path=image_path)
 
+@app.route('/error')
+def error_page():
+    return render_template('error.html', message="An error occurred: some form data was missing.")
+
 @app.route('/formulaire', methods=['GET', 'POST'])
 def add_stone():
     if request.method == 'POST':
-        name = request.form['name']
-        comments = request.form['comments']
-        provenance = request.form['provenance']
-        date_acquisition = request.form['date_acquisition']
-        price = request.form['price']
-        weight = request.form['weight']
-        other_info = request.form['other_info']
-        box = request.form['box']
+        try:
+            name = request.form['name']
+            comments = request.form['comments']
+            provenance = request.form['provenance']
+            date_acquisition = request.form['date_acquisition']
+            price = request.form['price']
+            weight = request.form['weight']
+            other_info = request.form['other_info']
+            box = request.form['box']
+
+        except KeyError as e:
+            print(f"Error while collecting data {str(e)}. Please retry", "error")
+            return redirect(url_for('error_page'))
 
         conn = sqlite3.connect('bd/data.bd')
         cursor = conn.cursor()

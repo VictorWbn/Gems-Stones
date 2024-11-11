@@ -14,11 +14,11 @@
     </header>
     <main>
         <form action="{{ url_for('add_stone') }}" method="POST">
-            <label for="nom">Name:</label>
-            <input type="text" id="nom" name="nom" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-            <label for="commentaires">Comments:</label>
-            <textarea id="commentaires" name="commentaires"></textarea>
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments"></textarea>
 
             <label for="provenance">Provenance:</label>
             <input type="text" id="provenance" name="provenance">
@@ -26,19 +26,19 @@
             <label for="date_acquisition">Acquisition Date:</label>
             <input type="date" id="date_acquisition" name="date_acquisition" required>
 
-            <label for="prix_achat">Price (€):</label>
-            <input type="number" step="0.01" id="prix_achat" name="prix_achat" required>
+            <label for="price">Price (€):</label>
+            <input type="number" step="0.01" id="price" name="price" required>
 
-            <label for="cm_g">Dimensions (cm/g):</label>
-            <input type="text" id="cm_g" name="cm_g">
+            <label for="weight">Dimensions (cm/g):</label>
+            <input type="text" id="weight" name="weight">
 
-            <label for="autres_infos">Additional Info:</label>
-            <textarea id="autres_infos" name="autres_infos"></textarea>
+            <label for="other_info">Additional Info:</label>
+            <textarea id="text" name="other_info"></textarea>
 
-            <label for="boite">Box:</label>
-            <input type="text" id="boite" name="boite">
+            <label for="box">Box:</label>
+            <input type="text" id="box" name="box">
 
-            <button type="submit">Add Stone</button>
+            <button type="submit">Add Gem/Stone</button>
         </form>
     </main>
 </body>
