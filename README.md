@@ -27,7 +27,11 @@ The app follows a standard Flask application structure:
 - **`resources/`**: A folder to include database files or configuration files if needed.
 - **`bd/`**: Database file (if using SQLite) or other necessary backend files for storing stone data.
 
-## Installation & Setup
+### Home Page
+![Home Page](images/home.png)
 
-- **Python 3.7 or more**
-- **Flask**: Install Flask.
+### Stone Detail Page
+![Stone Detail Page](images/details.png)
+
+### Form
+![Form](images/form.png)
