@@ -18,12 +18,14 @@
         <ul id="stoneList">
             {% for stone in stones %}
                 <li>
-                    <a href="/stone/{{ stone[0] }}" class="button">{{ stone[0] }}</a>
+                    <a href="/stone/{{ stone['Nom'] }}" class="button">
+                        <img src="{{ stone['ImagePathLowRes'] }}" alt="{{ stone['Nom'] }}" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                        {{ stone['Nom'] }}
+                    </a>
                 </li>
             {% endfor %}
         </ul>
     </div>
-
     <script>
         function filterStones() {
             const query = document.getElementById('searchBar').value.toLowerCase();

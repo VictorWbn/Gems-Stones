@@ -34,7 +34,26 @@ def get_stone_details(name):
 @app.route('/')
 def index():
     stones = get_stones()
-    return render_template('index.html', stones=stones)
+    stones_with_paths = []
+
+    for stone in stones:
+        image_name = stone[0].replace(" ", "_") + ".png"
+        original_image_path = os.path.join('static/images', image_name)
+        thumbnail_image_path = os.path.join('static/thumbnail', image_name)
+
+        if os.path.exists(thumbnail_image_path):
+            thumbnail_path = url_for('static', filename=f'thumbnail/{image_name}')
+        elif os.path.exists(original_image_path):
+            thumbnail_path = url_for('static', filename=f'images/{image_name}')
+        else:
+            thumbnail_path = url_for('static', filename='images/imageNotFound.png')
+
+        stones_with_paths.append({
+            "Nom": stone[0],
+            "ImagePathLowRes": thumbnail_path
+        })
+
+    return render_template('index.html', stones=stones_with_paths)
 
 @app.route('/stone/<stone_name>')
 def stone_detail(stone_name):
