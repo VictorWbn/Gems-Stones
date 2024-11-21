@@ -15,6 +15,9 @@
     </header>
     <main>
         <form action="{{ url_for('add_stone') }}" method="POST">
+            <br>
+            <button type="submit">Add Gem/Stone</button>
+
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -38,8 +41,6 @@
 
             <label for="box">Box:</label>
             <input type="text" id="box" name="box">
-
-            <button type="submit">Add Gem/Stone</button>
         </form>
     </main>
 </body>

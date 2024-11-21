@@ -83,5 +83,49 @@ def add_stone():
         return redirect(url_for('index'))
 
     return render_template('add_stone.html')
+
+@app.route('/edit_stone/<stone_name>', methods=['GET', 'POST'])
+def edit_stone(stone_name):
+    stone = get_stone_details(stone_name)
+    if not stone:
+        return "Pierre non trouvée", 404
+
+    if request.method == 'POST':
+        try:
+            new_name = request.form['name']
+            comments = request.form['comments']
+            provenance = request.form['provenance']
+            date_acquisition = request.form['date_acquisition']
+            price = request.form['price']
+            weight = request.form['weight']
+            other_info = request.form['other_info']
+            box = request.form['box']
+        except KeyError as e:
+            print(f"Erreur de récupération des données : {str(e)}")
+            return redirect(url_for('error_page'))
+
+        conn = sqlite3.connect('bd/data.bd')
+        cursor = conn.cursor()
+        cursor.execute('''
+            UPDATE mineraux
+            SET Nom = ?, Commentaires = ?, Provenance = ?, Date_acquisition = ?, Prix_achat = ?, cm_g = ?, autres_infos = ?, Boite = ?
+            WHERE Nom = ?
+        ''', (new_name, comments, provenance, date_acquisition, price, weight, other_info, box, stone_name))
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('stone_detail', stone_name=new_name))
+
+    return render_template('edit_stone.html', stone=stone)
+
+@app.route('/stone/<stone_name>/delete', methods=['POST'])
+def delete_stone(stone_name):
+    conn = sqlite3.connect('bd/data.bd')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM mineraux WHERE Nom = ?", (stone_name,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)

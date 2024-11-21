@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Edit {{ stone.Nom }}{% endblock %}
+
+{% block content %}
+
+    <br>
+    <div class="stone-edit">
+    <h1>Edit {{ stone.Nom }}</h1>
+    <form method="POST">
+        <div class="actions">
+            <button type="submit" class="btn btn-danger">Save</button>
+            <a href="{{ url_for('stone_detail', stone_name=stone.Nom) }}" class="btn btn-secondary">Cancel</a>
+        </div>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ stone.Nom }}" required><br>
+
+        <label for="comments">Comments:</label>
+        <input type="text" name="comments" value="{{ stone.Commentaires }}"><br>
+
+        <label for="provenance">Provenance:</label>
+        <input type="text" name="provenance" value="{{ stone.Provenance }}"><br>
+
+        <label for="date_acquisition">Acquisition Date:</label>
+        <input type="date" name="date_acquisition" value="{{ stone.Date_acquisition }}"><br>
+
+        <label for="price">Purchase Price:</label>
+        <input type="number" name="price" value="{{ stone.Prix_achat }}"><br>
+
+        <label for="weight">Weight:</label>
+        <input type="text" name="weight" value="{{ stone.cm_g }}"><br>
+
+        <label for="other_info">Additional Information:</label>
+        <input type="text" name="other_info" value="{{ stone.autres_infos }}"><br>
+
+        <label for="box">Box:</label>
+        <input type="text" name="box" value="{{ stone.Boite }}"><br>
+    </form>
+    </div>
+    <br>
+
+{% endblock %}
