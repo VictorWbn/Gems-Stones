@@ -45,7 +45,7 @@ def stone_detail(stone_name):
     image_path = os.path.join(app.root_path, 'static', 'images', f"{stone_name}.png")
 
     if not os.path.exists(image_path):
-        image_path = url_for('static', filename='images/errorNoImage.png')
+        image_path = url_for('static', filename='images/imageNotFound.png')
     else:
         image_path = url_for('static', filename=f'images/{stone_name}.png')
 
