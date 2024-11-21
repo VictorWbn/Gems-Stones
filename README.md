@@ -1,4 +1,4 @@
-# Gems & Stones
+# <img src="./images/Logo.png" alt="Logo" width="32" height="32"/> Gems & Stones
 
 ### Created by: Victor Wybon
 
@@ -14,6 +14,7 @@ While the repository contains only a few sample images (due to storage considera
 
 - **Stone Listing**: Displays a full list of all gems, stones, and fossils in the collection.
 - **Stone Details**: Each item includes detailed information like comments, origin, acquisition date, purchase price, weight, additional info, and in which storage box the stone/gem is.
+- **Stone Editing**: Editing existing stone/gem or delete them from the collection.
 - **Search Functionality**: Allows users to search for specific stones by name.
 - **Add New Stone**: Users can add new stones to the collection by filling out a form with relevant information.
 
@@ -33,5 +34,8 @@ The app follows a standard Flask application structure:
 ### Stone Detail Page
 ![Stone Detail Page](images/details.png)
 
-### Form
-![Form](images/form.png)
+### New Stone Form
+![New Stone Form](images/stone_form.png)
+
+### Editing Stone Form
+![Editing Stone Form](images/stone_edit.png)
