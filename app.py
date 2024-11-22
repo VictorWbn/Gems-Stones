@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import sqlite3
 import os
 
@@ -59,7 +59,7 @@ def index():
 def stone_detail(stone_name):
     stone = get_stone_details(stone_name)
     if not stone:
-        return "Pierre non trouvée", 404
+        return render_template('error.html', message="Stone Not Found")
 
     image_path = os.path.join(app.root_path, 'static', 'images', f"{stone_name}.png")
 
@@ -107,7 +107,7 @@ def add_stone():
 def edit_stone(stone_name):
     stone = get_stone_details(stone_name)
     if not stone:
-        return "Pierre non trouvée", 404
+        return render_template('error.html', message="Stone Not Found")
 
     if request.method == 'POST':
         try:
@@ -120,8 +120,8 @@ def edit_stone(stone_name):
             other_info = request.form['other_info']
             box = request.form['box']
         except KeyError as e:
-            print(f"Erreur de récupération des données : {str(e)}")
-            return redirect(url_for('error_page'))
+            message="Error while collecting data"
+            return render_template('error.html', message=message)
 
         conn = sqlite3.connect('bd/data.bd')
         cursor = conn.cursor()
@@ -145,6 +145,47 @@ def delete_stone(stone_name):
     conn.commit()
     conn.close()
     return redirect(url_for('index'))
+
+
+def get_country_coordinates(country_name):
+    coordinates_map = {
+        "Canada": [56.1304, -106.3468],
+        "France": [46.603354, 1.888334],
+        "USA": [37.09024, -95.712891],
+        "Germany": [51.1657, 10.4515],
+        "Italy": [41.87194, 12.56738],
+    }
+    return coordinates_map.get(country_name, [0, 0])
+
+
+@app.route('/api/map-data')
+def map_data():
+    conn = sqlite3.connect('bd/data.bd')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT Provenance, COUNT(*), GROUP_CONCAT(Nom) FROM mineraux GROUP BY Provenance")
+    stones_by_country = cursor.fetchall()
+    conn.close()
+
+    result = []
+    for country, count, stones in stones_by_country:
+        if country:
+            coordinates = get_country_coordinates(country)
+            stone_list = stones.split(",") if stones else []
+            result.append({
+                "country": country,
+                "coordinates": coordinates,
+                "stones": stone_list,
+                "count": count
+            })
+
+    return jsonify(result)
+
+
+@app.route('/map')
+def map_view():
+    return render_template('map.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
