@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Error</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/Logo.png') }}">
-</head>
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<br>
 <body>
     <div class="error-page">
         <h1>Error</h1>
         <p>{{ message }}</p>
-        <a href="{{ url_for('add_stone') }}" class="button">Go Back</a>
+        <a href="{{ url_for('index') }}" class="button">HomePage</a>
     </div>
 </body>
 </html>
+{% endblock %}
