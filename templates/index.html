@@ -22,8 +22,9 @@
             {% for stone in stones %}
                 <li>
                     <a href="/stone/{{ stone['Nom'] }}" class="button">
-                        <img src="{{ stone['ImagePathLowRes'] }}" alt="{{ stone['Nom'] }}" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
-                        {{ stone['Nom'] }}
+                            <img src="{{ stone['ImagePathLowRes'] }}" alt="{{ stone['Nom'] }}"
+                                 style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                        <p>{{ stone['Nom'] }}</p>
                     </a>
                 </li>
             {% endfor %}
